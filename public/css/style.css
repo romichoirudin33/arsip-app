@@ -1,0 +1,39 @@
+nav.navbar.navbar-default.square{
+    border-radius: 0;
+}
+
+input.form-control.square{
+    border-radius: 0;
+}
+
+select.form-control.square{
+    border-radius: 0;
+}
+
+button.btn.square{
+    border-radius: 0;
+}
+
+.panel.square{
+    border-radius: 0;
+}
+
+.panel.mar-litle{
+    margin-bottom: 10px;
+}
+
+.control-label.mini{
+    font-size: 9px;
+}
+
+.control-label.lihat{
+    font-size: 9px;
+}
+.control-label.showisi{
+    font-size: 11px;
+    text-align: left;
+}
+
+.error-template {padding: 40px 15px;text-align: center;}
+.error-actions {margin-top:20px;margin-bottom:15px;}
+.error-actions .btn { margin-right:10px; }
