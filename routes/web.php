@@ -60,4 +60,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('reminder', 'ReminderController', ['except' => [
         'show', 'edit', 'update', 'destroy'
     ]]);
+
+    Route::resource('value', 'ValuePersonelController', ['except' => [
+        'show', 'edit', 'update', 'destroy', 'index'
+    ]]);
+    Route::get('value/destroy', 'ValuePersonelController@destroy')->name('value.destroy');
 });
