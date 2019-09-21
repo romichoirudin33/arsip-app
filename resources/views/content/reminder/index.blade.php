@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Setting Reminder')
+@section('title', 'Daftar Reminder')
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('assets/plugins/validetta/validetta.css') }}">
@@ -32,6 +32,82 @@
             </center>
         </div>
     </div>
+
+    @if($berkala->count() > 0)
+        <div class="panel panel-default square mar-litle">
+            <div class="panel-heading">
+                <center>
+                    <h5>
+                        <strong>
+                            Berkala
+                        </strong>
+                    </h5>
+                </center>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-responsive">
+                    <thead style="font-weight: bold">
+                    <tr>
+                        <td>NAMA NRP/NIP</td>
+                        <td>TMT BERKALA</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($berkala as $item)
+                        <tr>
+                            <td>
+                                <a href="{{ route('personel.show', ['id' => $item->uuid]) }}">
+                                    {{ ucfirst($item->nama) }} / {{ ucfirst($item->nip) }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ date('d-m-Y', strtotime($item->tmt_berkala)) }}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
+
+    @if($pangkat->count() > 0)
+        <div class="panel panel-default square mar-litle">
+            <div class="panel-heading">
+                <center>
+                    <h5>
+                        <strong>
+                            Pangkat
+                        </strong>
+                    </h5>
+                </center>
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered table-responsive">
+                    <thead style="font-weight: bold">
+                    <tr>
+                        <td>NAMA NRP/NIP</td>
+                        <td>TMT PANGKAT</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($pangkat as $item)
+                        <tr>
+                            <td>
+                                <a href="{{ route('personel.show', ['id' => $item->uuid]) }}">
+                                    {{ ucfirst($item->nama) }} / {{ ucfirst($item->nip) }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ date('d-m-Y', strtotime($item->tmt_pangkat)) }}
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    @endif
 
 @endsection
 

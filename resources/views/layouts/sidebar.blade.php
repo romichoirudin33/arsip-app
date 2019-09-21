@@ -21,8 +21,8 @@
                 <em class="fa fa-bookmark">&nbsp;</em> Personel
             </a>
         </li>
-        <li class="{{ Request::is('about') ? 'active' : '' }}">
-            <a href="{{ route('personel.index') }}">
+        <li class="{{ Request::is('kepala-jabatan') ? 'active' : '' }}">
+            <a href="{{ route('kepala-jabatan.index') }}">
                 <em class="fa fa-bookmark">&nbsp;</em> Kepala Jabatan
             </a>
         </li>

@@ -29,19 +29,19 @@
                 </tr>
                 <tr>
                     <td>TEMPAT, TGL LAHIR</td>
-                    <td>: {{ $data->tempat_lahir }}, {{ $data->tgl_lahir }}</td>
+                    <td>: {{ $data->tempat_lahir }}, {{ date('d-m-Y', strtotime($data->tgl_lahir)) }}</td>
                 </tr>
                 <tr>
                     <td>TMT PENSIUN</td>
-                    <td>: {{ $data->tgl_pensiun }}</td>
+                    <td>: {{ date('d-m-Y', strtotime($data->tgl_pensiun )) }}</td>
                 </tr>
                 <tr>
                     <td>TMT PANGKAT</td>
-                    <td>: {{ $data->tmt_pangkat }}</td>
+                    <td>: {{ date('d-m-Y', strtotime($data->tmt_pangkat)) }}</td>
                 </tr>
                 <tr>
                     <td>TMT BERKALA</td>
-                    <td>: {{ $data->tmt_berkala }}</td>
+                    <td>: {{ date('d-m-Y', strtotime($data->tmt_berkala)) }}</td>
                 </tr>
             </table>
         </div>
@@ -55,13 +55,13 @@
                     <tr>
                         <td colspan="{{ $kat->detailKategori->count() + 2 }}">{{ $kat->name }}
                             @if($kat->detailKategori->count() > 0)
-                            <a href="{{ route('value.create', ['kategori' => $kat->id, 'id' => $data->uuid]) }}">
-                                @if($kat->is_many == '0')
-                                    <span class="fa fa-pencil"> </span>
-                                @else
-                                    <span class="fa fa-plus"> </span>
-                                @endif
-                            </a>
+                                <a href="{{ route('value.create', ['kategori' => $kat->id, 'id' => $data->uuid]) }}">
+                                    @if($kat->is_many == '0')
+                                        <span class="fa fa-pencil"> </span>
+                                    @else
+                                        <span class="fa fa-plus"> </span>
+                                    @endif
+                                </a>
                             @endif
                         </td>
                     </tr>
@@ -83,10 +83,11 @@
                             $urutan = \App\Models\Urutan::where('personel_id', $data->id)
                             ->where('kategori_id', $kat->id)
                             ->first();
+                        $urutan_id = $urutan ? $urutan->id : 0;
                         @endphp
                         @foreach($kat->detailKategori as $val)
                             <?php
-                            $valDetail = \App\Models\ValueDetail::where('urutan_id', $urutan->id)
+                            $valDetail = \App\Models\ValueDetail::where('urutan_id', $urutan_id)
                                 ->where('detail_kategori_id', $val->id)
                                 ->first();
                             ?>

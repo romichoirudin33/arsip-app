@@ -27,7 +27,7 @@
         </div>
         <div class="panel-body">
             @if(count($personel) > 0)
-                <table class="table table-responsive">
+                <table class="table table-bordered table-responsive">
                     <thead style="font-weight: bold">
                     <tr>
                         <td>NAMA NRP/NIP</td>
@@ -43,7 +43,7 @@
                         <tr style="font-size: 12px">
                             <td>
                                 <a href="{{ route('personel.show', ['id' => $item->uuid]) }}">
-                                    {{ ucfirst($item->nama) }} {{ ucfirst($item->nip) }}
+                                    {{ ucfirst($item->nama) }} - {{ ucfirst($item->nip) }}
                                 </a>
                             </td>
                             <td>

@@ -102,7 +102,7 @@
                             <div class="col-md-8">
                                 <div class="input-group date">
                                     <input type="text" class="form-control input-sm date"
-                                           name="tmt_pangkat" value="{{ $data->tmt_pangkat }}"
+                                           name="tmt_pangkat" value="{{ date('m/d/Y', strtotime($data->tmt_pangkat)) }}"
                                            autocomplete="off"
                                            required>
                                     <div class="input-group-addon">
@@ -121,7 +121,7 @@
                             <div class="col-md-8">
                                 <div class="input-group date">
                                     <input type="text" class="form-control input-sm date"
-                                           name="tmt_berkala" value="{{ $data->tmt_berkala }}"
+                                           name="tmt_berkala" value="{{ date('m/d/Y', strtotime($data->tmt_berkala)) }}"
                                            autocomplete="off"
                                            required>
                                     <div class="input-group-addon">

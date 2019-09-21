@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Personel;
 use App\Models\Reminder;
+use DateTime;
 use Illuminate\Http\Request;
 
 class ReminderController extends Controller
@@ -15,7 +17,19 @@ class ReminderController extends Controller
             Reminder::create(['name' => '6 months']);
             $data = Reminder::first();
         }
+
+        $date = new DateTime();
+        $date->modify('+'.$data->name);
+        $formatted_date = $date->format('Y-m-d');
+        $berkala = Personel::where('tmt_berkala', '<', $formatted_date)
+            ->orderBy('tmt_berkala', 'asc')
+            ->get();
+        $pangkat = Personel::where('tmt_pangkat', '<', $formatted_date)
+            ->orderBy('tmt_pangkat', 'asc')
+            ->get();
         return view('content.reminder.index')
+            ->with('berkala', $berkala)
+            ->with('pangkat', $pangkat)
             ->with('data', $data);
     }
 

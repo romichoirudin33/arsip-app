@@ -49,6 +49,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('category', 'KategoriController', ['except' => [
         'show'
     ]]);
+    Route::resource('kepala-jabatan', 'KepalaJabatanController', ['except' => [
+        'show'
+    ]]);
     Route::prefix('category')->group(function (){
         Route::get('/{id}/create_detail', 'KategoriController@create_detail')->name('category.create_detail');
         Route::post('/{id}/store_detail', 'KategoriController@store_detail')->name('category.store_detail');

@@ -59,9 +59,9 @@ class PersonelController extends Controller
             'tempat_lahir' => $request->input('tempat_lahir'),
             'tgl_lahir' => $request->input('tgl_lahir'),
             'foto' => $namaFoto,
-            'tmt_pangkat' => $request->input('tmt_pangkat'),
-            'tmt_berkala' => $request->input('tmt_berkala'),
-            'tgl_pensiun' => date('d/m/Y', $t2),
+            'tmt_pangkat' => date('Y-m-d', strtotime($request->input('tmt_pangkat'))),
+            'tmt_berkala' => date('Y-m-d', strtotime($request->input('tmt_berkala'))),
+            'tgl_pensiun' => date('Y-m-d', $t2),
         );
 
         Personel::create($data);
@@ -108,9 +108,9 @@ class PersonelController extends Controller
             'nip' => $request->input('nip'),
             'tempat_lahir' => $request->input('tempat_lahir'),
             'tgl_lahir' => $request->input('tgl_lahir'),
-            'tmt_pangkat' => $request->input('tmt_pangkat'),
-            'tmt_berkala' => $request->input('tmt_berkala'),
-            'tgl_pensiun' => date('d/m/Y', $t2),
+            'tmt_pangkat' => date('Y-m-d', strtotime($request->input('tmt_pangkat'))),
+            'tmt_berkala' => date('Y-m-d', strtotime($request->input('tmt_berkala'))),
+            'tgl_pensiun' => date('Y-m-d', $t2),
         );
 
         Personel::where('id', $id)->update($data);
